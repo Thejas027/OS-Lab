@@ -45,6 +45,18 @@ void fcfs(process p[], int n)
       }
 }
 
+void getInput(process p[], int *n)
+{
+
+      for (int i = 0; i < *n; i++)
+      {
+            printf("Enter the arrival time and burst time of the process  %d : ", i + 1);
+            scanf("%d %d", &p[i].arrivalTime, &p[i].burstTime);
+            p[i].pId = i + 1;
+            p[i].finished = 0;
+      }
+}
+
 void main()
 {
       int n;
@@ -52,14 +64,6 @@ void main()
       scanf("%d", &n);
 
       process p[n];
-
-      for (int i = 0; i < n; i++)
-      {
-            printf("Enter the arrival time and burst time of the process  %d : ", i + 1);
-            scanf("%d %d", &p[i].arrivalTime, &p[i].burstTime);
-            p[i].pId = i + 1;
-            p[i].finished = 0;
-      }
-
+      getInput(p, &n);
       fcfs(p, n);
 }
