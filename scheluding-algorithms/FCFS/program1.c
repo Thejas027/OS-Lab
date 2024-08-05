@@ -1,12 +1,22 @@
 #include <stdio.h>
-#include <stdlib.h>
+#include "process.h"
+#include "input.h"
 
-typedef struct process
+void getInput(Process p[], int *n)
 {
-      int pId, arrivalTime, burstTime, completionTime, waitingTime, turnAroundTime, responseTime, finished;
-} process;
+      printf("Enter the number of processes: ");
+      scanf("%d", n);
 
-void fcfs(process p[], int n)
+      for (int i = 0; i < *n; i++)
+      {
+            printf("Enter the arrival time and burst time of process %d: ", i + 1);
+            scanf("%d %d", &p[i].arrivalTime, &p[i].burstTime);
+            p[i].pId = i + 1;
+            p[i].finished = 0;
+      }
+}
+
+void fcfs(Process p[], int n)
 {
       int elapseTime = 0;
       float averageWaitingTime = 0, averageTurnAroundTime = 0, averageResponseTime = 0;
@@ -45,21 +55,16 @@ void fcfs(process p[], int n)
       }
 }
 
-void main()
+int main()
 {
       int n;
-      printf("Enter the number of Process : ");
-      scanf("%d", &n);
+      Process p[100];
+  
+      // to get an input
+      getInput(p, &n);
 
-      process p[n];
-
-      for (int i = 0; i < n; i++)
-      {
-            printf("Enter the arrival time and burst time of the process  %d : ", i + 1);
-            scanf("%d %d", &p[i].arrivalTime, &p[i].burstTime);
-            p[i].pId = i + 1;
-            p[i].finished = 0;
-      }
-
+      // fcfs
       fcfs(p, n);
+
+      return 0;
 }

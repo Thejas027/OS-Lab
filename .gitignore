@@ -1,5 +1,1 @@
-# Ignore executables
 *.exe
-
-# Ignore Visual Studio Code settings directory
-.vscode/
