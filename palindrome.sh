@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "Enter a number: "
-read number
+read -r number
 
 # Reverse the number 
 reversed=$(echo "$number" | rev)
