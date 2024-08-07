@@ -24,9 +24,8 @@ void *reader(void *parameter)
       pthread_mutex_lock(&mutex);
       numReader++;
       if (numReader == 1)
-      {
             sem_wait(&wrt);
-      }
+
       pthread_mutex_unlock(&mutex);
 
       printf("Reader %d: read count as %d\n", id, count);
@@ -34,9 +33,8 @@ void *reader(void *parameter)
       pthread_mutex_lock(&mutex);
       numReader--;
       if (numReader == 0)
-      {
             sem_post(&wrt);
-      }
+
       pthread_mutex_unlock(&mutex);
 
       pthread_exit(NULL);
@@ -51,27 +49,19 @@ int main()
 
       // Create writer threads
       for (int i = 0; i < 3; i++)
-      {
             pthread_create(&write[i], NULL, writer, (void *)&a[i]);
-      }
-
+      
       // Create reader threads
       for (int i = 0; i < 3; i++)
-      {
             pthread_create(&read[i], NULL, reader, (void *)&a[i]);
-      }
 
       // Join writer threads
       for (int i = 0; i < 3; i++)
-      {
             pthread_join(write[i], NULL);
-      }
 
       // Join reader threads
       for (int i = 0; i < 3; i++)
-      {
             pthread_join(read[i], NULL);
-      }
 
       pthread_mutex_destroy(&mutex);
       sem_destroy(&wrt);
