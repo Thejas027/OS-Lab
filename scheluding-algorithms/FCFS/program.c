@@ -24,7 +24,7 @@ void fcfs(process p[], int n)
             elapseTime += p[i].arrivalTime;
             p[i].completionTime = elapseTime;
 
-            p[i].turnAroundTime = p[i].turnAroundTime - p[i].arrivalTime;
+            p[i].turnAroundTime = p[i].completionTime - p[i].arrivalTime;
             p[i].waitingTime = p[i].turnAroundTime - p[i].burstTime;
 
             totalWaitingTime += p[i].waitingTime;
