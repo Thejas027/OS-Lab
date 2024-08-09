@@ -27,7 +27,7 @@ void priority(process p[], int n)
             }
       }
 
-      printf("\nGantt Chart\n");
+      printf("\nGnat Chart\n");
 
       for (int i = 0; i < n; i++)
       {
@@ -46,7 +46,7 @@ void priority(process p[], int n)
             totalTurnAroundTime += p[i].turnAroundTime;
             totalWaitingTime += p[i].waitingTime;
 
-            // Print Gantt Chart
+            // Print Gnat Chart
             printf(" (%d) Process %d (%d) ", elapsedTime, p[i].pId, p[i].completionTime);
             elapsedTime += p[i].burstTime;
       }

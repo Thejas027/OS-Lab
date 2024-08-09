@@ -13,7 +13,9 @@ void *writer(void *parameter)
       int id = *((int *)parameter);
       sem_wait(&wrt);
       count *= 2;
+
       printf("Writer %d modified count to %d\n", id, count);
+
       sem_post(&wrt);
       pthread_exit(NULL);
 }
@@ -22,6 +24,7 @@ void *reader(void *parameter)
 {
       int id = *((int *)parameter);
       pthread_mutex_lock(&mutex);
+
       numReader++;
       if (numReader == 1)
             sem_wait(&wrt);
@@ -31,6 +34,7 @@ void *reader(void *parameter)
       printf("Reader %d: read count as %d\n", id, count);
 
       pthread_mutex_lock(&mutex);
+      
       numReader--;
       if (numReader == 0)
             sem_post(&wrt);

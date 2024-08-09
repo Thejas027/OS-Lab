@@ -17,6 +17,7 @@ int main()
       key_t key = 1234;
       int shmid = shmget(key, sizeof(pack_t), 0666 | IPC_CREAT);
 
+
       pack_t *shm_ptr = (pack_t *)shmat(shmid, NULL, 0);
       printf("[PARENT] : created shared memory with key = %d , id = %d, address = %d\n", key, shmid, shm_ptr);
 

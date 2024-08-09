@@ -1,1 +1,4 @@
-This is a sample text file for testing the file I/O program.
+hello world
+example text
+goodbye world
+hello again

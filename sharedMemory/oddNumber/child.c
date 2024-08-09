@@ -12,6 +12,7 @@ typedef struct
       int arr[100];
 } pack_t;
 
+
 int main()
 {
       key_t key = 1234;

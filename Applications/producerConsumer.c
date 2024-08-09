@@ -20,9 +20,11 @@ void *producer(void *pro)
             item = rand() % 100;
             sem_wait(&empty);
             pthread_mutex_lock(&mutex);
+
             buffer[in] = item;
             printf("Producer %d: inserted item %d at %d\n", *((int *)pro), buffer[in], in);
             in = (in + 1) % BUFFER_SIZE;
+
             pthread_mutex_unlock(&mutex);
             sem_post(&full);
       }
@@ -35,9 +37,11 @@ void *consumer(void *con)
       {
             sem_wait(&full);
             pthread_mutex_lock(&mutex);
+
             int item = buffer[out];
             printf("Consumer %d: removed %d from %d\n", *((int *)con), item, out);
             out = (out + 1) % BUFFER_SIZE;
+            
             pthread_mutex_unlock(&mutex);
             sem_post(&empty);
       }

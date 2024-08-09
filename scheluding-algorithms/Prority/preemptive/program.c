@@ -15,8 +15,8 @@ void priorityPreemptive(process p[], int n)
       float avgWaitingTime = 0, avgTurnAroundTime = 0, avgResponseTime = 0;
       int elapsedTime = 0;
       int completedProcess = 0; // Initialize completedProcess
-
       bool processCompleted[n];
+      
       for (int i = 0; i < n; i++)
       {
             processCompleted[i] = false;

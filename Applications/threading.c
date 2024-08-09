@@ -39,11 +39,11 @@ int main(int argc, char *argv[])
       }
 
       pthread_t T1, T2;
-      pthread_attr_t attr;
-      pthread_attr_init(&attr);
+      // pthread_attr_t attr;
+      // pthread_attr_init(&attr);
 
-      pthread_create(&T1, &attr, sum, (void *)argv[1]);
-      pthread_create(&T2, &attr, product, (void *)argv[1]);
+      pthread_create(&T1, NULL, sum, (void *)argv[1]);
+      pthread_create(&T2, NULL, product, (void *)argv[1]);
 
       pthread_join(T1, NULL);
       pthread_join(T2, NULL);

@@ -5,6 +5,7 @@ read -r number
 
 # Reverse the number 
 reversed=$(echo "$number" | rev)
+
 if [ "$number" -eq "$reversed" ]; then
       echo "$number is a palindrome."
 else
