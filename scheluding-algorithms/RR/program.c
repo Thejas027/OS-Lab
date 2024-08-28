@@ -15,33 +15,33 @@ void roundRobin(Process p[], int n, int quantum)
       waitQueue[rear++] = 0;
       p[0].flag = 1;
 
-      printf("\nGant Chart:\n");
+      printf("\nGnat Chart:\n");
       while (completed < n)
       {
-            int exec = waitQueue[front++];
+            int i = waitQueue[front++];
 
-            if (p[exec].remainingTime == p[exec].burstTime)
-                  p[exec].responseTime = elapsedTime - p[exec].arrivalTime;
+            if (p[i].remainingTime == p[i].burstTime)
+                  p[i].responseTime = elapsedTime - p[i].arrivalTime;
 
-            if (p[exec].remainingTime > quantum)
+            if (p[i].remainingTime > quantum)
             {
-                  p[exec].remainingTime -= quantum;
+                  p[i].remainingTime -= quantum;
                   elapsedTime += quantum;
-                  printf("| (%d) P%d (%d) ", elapsedTime - quantum, p[exec].id, elapsedTime);
+                  printf("| (%d) P%d (%d) ", elapsedTime - quantum, p[i].id, elapsedTime);
             }
             else
             {
                   completed++;
-                  elapsedTime += p[exec].remainingTime;
-                  printf("| (%d) P%d (%d) ", elapsedTime - p[exec].remainingTime, p[exec].id, elapsedTime);
-                  p[exec].remainingTime = 0;
-                  p[exec].completionTime = elapsedTime;
-                  p[exec].totalTurnAroundTime = p[exec].completionTime - p[exec].arrivalTime;
-                  p[exec].waitingTime = p[exec].totalTurnAroundTime - p[exec].burstTime;
+                  elapsedTime += p[i].remainingTime;
+                  printf("| (%d) P%d (%d) ", elapsedTime - p[i].remainingTime, p[i].id, elapsedTime);
+                  p[i].remainingTime = 0;
+                  p[i].completionTime = elapsedTime;
+                  p[i].totalTurnAroundTime = p[i].completionTime - p[i].arrivalTime;
+                  p[i].waitingTime = p[i].totalTurnAroundTime - p[i].burstTime;
 
-                  totalResponseTime += p[exec].responseTime;
-                  totalTurnAroundTime += p[exec].totalTurnAroundTime;
-                  totalWaitingTime += p[exec].waitingTime;
+                  totalResponseTime += p[i].responseTime;
+                  totalTurnAroundTime += p[i].totalTurnAroundTime;
+                  totalWaitingTime += p[i].waitingTime;
             }
 
             for (int i = 0; i < n && p[i].arrivalTime <= elapsedTime; i++)
@@ -53,8 +53,8 @@ void roundRobin(Process p[], int n, int quantum)
                   }
             }
 
-            if (p[exec].remainingTime > 0)
-                  waitQueue[rear++] = exec;
+            if (p[i].remainingTime > 0)
+                  waitQueue[rear++] = i;
       }
 
       printf("\n");

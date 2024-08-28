@@ -35,7 +35,7 @@ void fcfs(process p[], int n)
       }
       // calculating the average times '
 
-      printf("\n1.Average Turn Around Time : %f \n2.Average Waiting Time : %f\n3.Average Response Time : %f\n", (float)totalTurnAroundTime, (float)totalWaitingTime, (float)totalResponseTime);
+      printf("\n1.Average Turn Around Time : %f \n2.Average Waiting Time : %f\n3.Average Response Time : %f\n", (float)totalTurnAroundTime / n, (float)totalWaitingTime / n, (float)totalResponseTime / n);
 }
 
 void getInput(process p[], int *n)

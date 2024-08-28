@@ -10,7 +10,6 @@ typedef struct Process
 void priority(process p[], int n)
 {
       int totalTurnAroundTime = 0, totalWaitingTime = 0, totalResponseTime = 0;
-      float avgWaitingTime = 0, avgTurnAroundTime = 0, avgResponseTime = 0;
       int elapsedTime = 0;
 
       // Sort processes by priority (lower value means higher priority)
@@ -18,11 +17,11 @@ void priority(process p[], int n)
       {
             for (int j = i + 1; j < n; j++)
             {
-                  if (p[i].priority > p[j].priority)
+                  if (p[j].priority > p[j + 1].priority)
                   {
-                        process temp = p[i];
-                        p[i] = p[j];
-                        p[j] = temp;
+                        process temp = p[j];
+                        p[j] = p[j + 1];
+                        p[j + 1] = temp;
                   }
             }
       }
@@ -51,15 +50,10 @@ void priority(process p[], int n)
             elapsedTime += p[i].burstTime;
       }
 
-      // Calculate averages
-      avgResponseTime = (float)totalResponseTime / n;
-      avgTurnAroundTime = (float)totalTurnAroundTime / n;
-      avgWaitingTime = (float)totalWaitingTime / n;
-
       // Print averages
-      printf("\n\nAverage Waiting Time: %.2f", avgWaitingTime);
-      printf("\nAverage Turn Around Time: %.2f", avgTurnAroundTime);
-      printf("\nAverage Response Time: %.2f\n", avgResponseTime);
+      printf("\n\nAverage Waiting Time: %.2f", (float)totalWaitingTime / n);
+      printf("\nAverage Turn Around Time: %.2f", (float)totalTurnAroundTime / n);
+      printf("\nAverage Response Time: %.2f\n", (float)totalResponseTime / n);
 }
 
 void getInput(process p[], int *n)
