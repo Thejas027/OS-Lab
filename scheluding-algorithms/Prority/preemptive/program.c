@@ -12,11 +12,10 @@ typedef struct Process
 void priorityPreemptive(process p[], int n)
 {
       int totalTurnAroundTime = 0, totalWaitingTime = 0, totalResponseTime = 0;
-      float avgWaitingTime = 0, avgTurnAroundTime = 0, avgResponseTime = 0;
       int elapsedTime = 0;
-      int completedProcess = 0; // Initialize completedProcess
+      int completedProcess = 0;
       bool processCompleted[n];
-      
+
       for (int i = 0; i < n; i++)
       {
             processCompleted[i] = false;
@@ -68,15 +67,9 @@ void priorityPreemptive(process p[], int n)
             }
       }
 
-      // Calculate averages
-      avgResponseTime = (float)totalResponseTime / n;
-      avgTurnAroundTime = (float)totalTurnAroundTime / n;
-      avgWaitingTime = (float)totalWaitingTime / n;
-
-      // Print averages
-      printf("\n\nAverage Waiting Time: %.2f", avgWaitingTime);
-      printf("\nAverage Turn Around Time: %.2f", avgTurnAroundTime);
-      printf("\nAverage Response Time: %.2f\n", avgResponseTime);
+      printf("\n\nAverage Waiting Time: %.2f", (float)totalWaitingTime / n);
+      printf("\nAverage Turn Around Time: %.2f", (float)totalTurnAroundTime / n);
+      printf("\nAverage Response Time: %.2f\n", (float)totalResponseTime / n);
 }
 
 void getInput(process p[], int *n)

@@ -14,7 +14,7 @@ typedef struct
 
 int main()
 {
-      key_t key = ftok("shmfile", 65);
+      key_t key = ftok("shm-file", 65);
       int shmid = shmget(key, sizeof(pack_t), 0666 | IPC_CREAT);
       pack_t *shm_ptr = (pack_t *)shmat(shmid, NULL, 0);
 

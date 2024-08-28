@@ -1,5 +1,3 @@
-
-
 #include <stdio.h>
 #include <limits.h>
 
@@ -12,13 +10,12 @@ typedef struct process
 
 void SRTF(process p[], int n)
 {
-      float avgWaitingTime = 0, avgTurnAroundTime = 0, avgResponseTime = 0;
       int totalTurnAroundTime = 0, totalWaitingTime = 0, totalResponseTime = 0;
       int elapsedTime = 0, completed = 0;
       int shortestRemainingTime;
       int exec = -1;
 
-      printf("\nGantt Chart\n");
+      printf("\nGnat Chart\n");
 
       while (completed < n)
       {
@@ -39,9 +36,7 @@ void SRTF(process p[], int n)
                         if (p[i].remainingTime == shortestRemainingTime)
                         {
                               if (p[i].arrivalTime < p[exec].arrivalTime)
-                              {
                                     exec = i;
-                              }
                         }
                   }
             }
@@ -74,18 +69,14 @@ void SRTF(process p[], int n)
                   totalTurnAroundTime += p[exec].turnAroundTime;
                   totalResponseTime += p[exec].responseTime;
 
-                  // Print Gantt Chart
+                  // Print Gnat Chart
                   printf("(%d) Process %d (%d)\n", p[exec].startTime, p[exec].pid, elapsedTime);
             }
       }
 
-      avgWaitingTime = (float)totalWaitingTime / n;
-      avgTurnAroundTime = (float)totalTurnAroundTime / n;
-      avgResponseTime = (float)totalResponseTime / n;
-
-      printf("\nAverage Waiting Time: %.2f", avgWaitingTime);
-      printf("\nAverage Turn Around Time: %.2f", avgTurnAroundTime);
-      printf("\nAverage Response Time: %.2f\n", avgResponseTime);
+      printf("\n\nAverage Waiting Time: %.2f", (float)totalWaitingTime / n);
+      printf("\nAverage Turn Around Time: %.2f", (float)totalTurnAroundTime / n);
+      printf("\nAverage Response Time: %.2f\n", (float)totalResponseTime / n);
 }
 
 int main()

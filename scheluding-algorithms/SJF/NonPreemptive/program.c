@@ -9,8 +9,8 @@ typedef struct process
 
 void SFJ(process p[], int n)
 {
-      float avgWaitingTime = 0, avgTurnAroundTime = 0, avgResponseTime = 0;
-      int totalTurnAroundTime = 0, totalWaitingTime = 0, elapsedTime = 0, totalResponseTime = 0;
+      int totalTurnAroundTime = 0, totalWaitingTime = 0, totalResponseTime = 0;
+      int elapsedTime = 0;
       int remainingProcess = n;
 
       printf("\nGnat Chart\n");
@@ -58,15 +58,10 @@ void SFJ(process p[], int n)
             }
       }
 
-      // Calculate averages
-      avgWaitingTime = (float)totalWaitingTime / n;
-      avgTurnAroundTime = (float)totalTurnAroundTime / n;
-      avgResponseTime = (float)totalResponseTime / n;
-
       // Print averages
-      printf("\n\nAverage Waiting Time: %.2f", avgWaitingTime);
-      printf("\nAverage Turn Around Time: %.2f", avgTurnAroundTime);
-      printf("\nAverage Response Time: %.2f\n", avgResponseTime);
+      printf("\n\nAverage Waiting Time: %.2f", (float)totalWaitingTime / n);
+      printf("\nAverage Turn Around Time: %.2f", (float)totalTurnAroundTime / n);
+      printf("\nAverage Response Time: %.2f\n", (float)totalResponseTime / n);
 }
 
 void getInput(process p[], int *n)
