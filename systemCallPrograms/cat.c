@@ -30,7 +30,7 @@ int main(int argc, char *argv[])
 
       for (int i = 1; i < argc; i++)
       {
-            printf("Content of %s:\n", argv[i]);
+            printf("\nContent of %s: ", argv[i]);
             cat_file(argv[i]);
       }
 
